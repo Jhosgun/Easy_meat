@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "130634906449",
+    "project_id": "easymeatv2",
+    "storage_bucket": "easymeatv2.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:130634906449:android:16a759cf9300fd31443170",
+        "android_client_info": {
+          "package_name": "com.example.easymeat"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "130634906449-9kv4rjlmh1a2ck7frmugtieup1eum7o6.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBMAjri8-sEBKB1HZ-dNzPyHStq_hvEH9o"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "130634906449-9kv4rjlmh1a2ck7frmugtieup1eum7o6.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
