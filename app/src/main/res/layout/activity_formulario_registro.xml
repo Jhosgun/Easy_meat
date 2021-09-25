@@ -163,7 +163,7 @@
 
 
             <EditText
-                android:id="@+id/etCreatepassword"
+                android:id="@+id/etPassword"
                 android:layout_width="match_parent"
                 android:hint="Contraseña"
                 android:layout_height="wrap_content"
@@ -181,7 +181,7 @@
 
 
             <EditText
-                android:id="@+id/etConfirmpassword"
+                android:id="@+id/etPassword2"
                 android:layout_width="match_parent"
                 android:hint="Verificar Contraseña"
                 android:layout_height="wrap_content"
@@ -191,7 +191,7 @@
         </com.google.android.material.textfield.TextInputLayout>
 
         <Button
-            android:id="@+id/btnRegistro"
+            android:id="@+id/btnRegistrar"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textSize="16dp"
