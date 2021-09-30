@@ -42,6 +42,11 @@ class MainActivity : AppCompatActivity() {
                     if (etEmail.text.isNotEmpty() && etPassword.text.isNotEmpty()) {
                         if (email == etEmail.text.toString() && password == etPassword.text.toString()) {
                             Toast.makeText(this, "Lo lograste", Toast.LENGTH_LONG).show()
+                            if(email == "administrador@easymeat.com" && password == "admin"){
+                                val adminlogin = Intent(this, RegisterShop::class.java)
+                                startActivity(adminlogin)
+                            }
+
 
                         }else{
                             Toast.makeText(this, "F", Toast.LENGTH_LONG).show()
