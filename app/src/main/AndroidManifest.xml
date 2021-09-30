@@ -9,7 +9,10 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Easymeat">
-        <activity android:name=".Login"></activity>
+        <activity
+            android:name=".RegisterShop"
+            android:exported="true" />
+        <activity android:name=".Login" />
         <activity android:name=".AddProducto" />
         <activity android:name=".FormularioRegistro" />
         <activity android:name=".MainActivity">

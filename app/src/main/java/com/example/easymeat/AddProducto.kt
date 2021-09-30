@@ -13,7 +13,7 @@ class AddProducto : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_add_producto)
 
-        val DB = FirebaseFirestore.getInstance()
+        var DB = FirebaseFirestore.getInstance()
 
         val etName = findViewById<EditText>(R.id.etName)
         val etType = findViewById<EditText>(R.id.etType)
@@ -30,6 +30,14 @@ class AddProducto : AppCompatActivity() {
                     "cost" to etCost.text.toString()
                 )
             )
+            Toast.makeText(this, "Producto Agregado", Toast.LENGTH_LONG).show()
+
+            val addProduct = Intent(this, AddProducto::class.java)
+            startActivity(addProduct)
+        }
+        btnAddproduct.setOnClickListener {
+
+
             Toast.makeText(this, "Producto Agregado", Toast.LENGTH_LONG).show()
 
             val addProduct = Intent(this, AddProducto::class.java)

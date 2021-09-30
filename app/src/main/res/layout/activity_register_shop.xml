@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".RegisterShop">
+
+    <!--El linear layout es para que no se superpongan elementos (uno sobre otro)-->
+    <LinearLayout
+        android:id="@+id/Ly1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_marginHorizontal="50dp"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+    >
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="20dp"
+            android:text="REGISTRAR TIENDA"
+            android:gravity="center"
+            android:layout_marginBottom="30dp"
+            />
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="16dp"
+            android:text="Nombre:"
+            android:layout_marginTop="0dp"
+            />
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
+            android:layout_marginTop="10dp"
+            app:endIconMode="clear_text">
+
+
+            <EditText
+                android:id="@+id/etName"
+                android:layout_width="match_parent"
+                android:hint="Nombre de la tienda"
+                android:inputType="text"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="16dp"
+            android:text="Dirección:"
+            android:layout_marginTop="15dp"
+            />
+        <!-- uso material.textfield para usar diseños ya establecidos (style)-->
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
+            android:layout_marginTop="10dp"
+            app:endIconMode="clear_text">
+
+            <EditText
+                android:id="@+id/etAddress"
+                android:layout_width="match_parent"
+                android:hint="Dirección de la tienda"
+                android:layout_height="wrap_content"
+                />
+        </com.google.android.material.textfield.TextInputLayout>
+
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="16dp"
+            android:text="Email:"
+            android:layout_marginTop="15dp"
+            />
+
+        <!-- uso material.textfield para usar diseños ya establecidos (style)-->
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
+            android:layout_marginTop="10dp"
+            app:endIconMode="clear_text">
+
+            <EditText
+                android:id="@+id/etEmail"
+                android:layout_width="match_parent"
+                android:hint="Correo electrónico del dueño"
+                android:layout_height="wrap_content"
+                />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="16dp"
+            android:text="Telefono:"
+            android:layout_marginTop="15dp"
+            />
+
+        <!-- uso material.textfield para usar diseños ya establecidos (style)-->
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
+            android:layout_marginTop="10dp"
+            app:endIconMode="clear_text">
+
+            <EditText
+                android:id="@+id/etphone"
+                android:layout_width="match_parent"
+                android:hint="Escribe tu número de contacto"
+                android:layout_height="wrap_content"
+                />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <Button
+            android:id="@+id/btnAccept"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="16dp"
+            android:text="Aceptar"
+            android:layout_marginTop="30dp"
+            android:layout_gravity="center"
+            android:paddingVertical="12dp"
+            android:paddingHorizontal="25dp"
+            android:backgroundTint="@color/rojo"/>
+
+    </LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>
