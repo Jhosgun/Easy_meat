@@ -35,14 +35,14 @@ class AddProducto : AppCompatActivity() {
             val addProduct = Intent(this, AddProducto::class.java)
             startActivity(addProduct)
         }
-        btnAddproduct.setOnClickListener {
-
-
-            Toast.makeText(this, "Producto Agregado", Toast.LENGTH_LONG).show()
-
-            val addProduct = Intent(this, AddProducto::class.java)
-            startActivity(addProduct)
-        }
+//        btnAddproduct.setOnClickListener {
+//
+//
+//            Toast.makeText(this, "Producto Agregado", Toast.LENGTH_LONG).show()
+//
+//            val addProduct = Intent(this, AddProducto::class.java)
+//            startActivity(addProduct)
+//        }
 
     }
 }
