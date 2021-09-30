@@ -11,6 +11,7 @@ import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
+import com.google.firebase.firestore.FirebaseFirestore
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -22,32 +23,33 @@ class MainActivity : AppCompatActivity() {
             startActivity(registro)
         }
 
+        val DB = FirebaseFirestore.getInstance()
         val btnIngresar = findViewById<Button>(R.id.btnIngresar)
 
         val etEmail = findViewById<EditText>(R.id.etEmail)
         val etPassword = findViewById<EditText>(R.id.etPassword)
+        var email:String = ""
+        var password:String = ""
 
         btnIngresar.setOnClickListener {
 
-            val addProduct = Intent(this, AddProducto::class.java)
-            startActivity(addProduct)
+            DB.collection("Usuario").whereEqualTo("email", etEmail.text.toString()).get()
+                .addOnSuccessListener { users ->
+                    for (user in users) {
+                        email = user.data.get("email").toString()
+                        password = user.data.get("password").toString()
+                    }
+                    if (etEmail.text.isNotEmpty() && etPassword.text.isNotEmpty()) {
+                        if (email == etEmail.text.toString() && password == etPassword.text.toString()) {
+                            Toast.makeText(this, "Lo lograste", Toast.LENGTH_LONG).show()
 
-            /*if (etEmail.text.isNotEmpty() && etPassword.text.isNotEmpty())
-            {
-                val user = FirebaseDatabase.getInstance().getReference()
-
-                val password = user.child("Usuario").child(etEmail.text.toString()).child("password").get().toString()
-
-
-                Toast.makeText(this, password, Toast.LENGTH_LONG).show()
-
-                //.getReference().child("unknown").child("Shrubs");
-                if(password==etPassword)
-                {
-                 val login = Intent(this, Login::class.java)
-                    startActivity(login)
-                }*/
-
+                        }else{
+                            Toast.makeText(this, "F", Toast.LENGTH_LONG).show()
+                        }
+                    }else{
+                        Toast.makeText(this, "Por favor llena los campos", Toast.LENGTH_LONG).show()
+                    }
+                }
 
         }
     }

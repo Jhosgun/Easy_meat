@@ -15,7 +15,7 @@ class FormularioRegistro : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_formulario_registro)
 
-        var DB = FirebaseFirestore.getInstance()
+        val DB = FirebaseFirestore.getInstance()
 
         val etnames = findViewById<EditText>(R.id.etnames)
         val etlastnames = findViewById<EditText>(R.id.etlastnames)
@@ -31,7 +31,7 @@ class FormularioRegistro : AppCompatActivity() {
 
         btnRegistrar.setOnClickListener {
 
-            DB.collection("Usuario").document(etId.text.toString()).set(
+            DB.collection("Usuario").document(etEmail.text.toString()).set(
                 hashMapOf(
                     "names" to etnames.text.toString(),
                     "lastnames" to etlastnames.text.toString(),
