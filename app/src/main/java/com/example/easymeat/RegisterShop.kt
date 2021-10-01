@@ -23,16 +23,18 @@ class RegisterShop : AppCompatActivity() {
 
         btnAccept.setOnClickListener {
 
-            DB.collection("Tienda").document(etEmail.text.toString()).set(
+            DB.collection("Tienda").add(
                 hashMapOf(
                     "name" to etName.text.toString(),
                     "address" to etAddress.text.toString(),
                     "email" to etEmail.text.toString(),
-                    "phone" to etPhone.text.toString(),
+                    "phone" to etPhone.text.toString()
                 )
             )
             Toast.makeText(this, "Tienda registrada", Toast.LENGTH_LONG).show()
 
+            val registerShop = Intent(this, RegisterShop::class.java)
+            startActivity(registerShop)
         }
     }
 }
