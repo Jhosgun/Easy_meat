@@ -12,7 +12,7 @@
         <activity
             android:name=".RegisterShop"
             android:exported="true" />
-        <activity android:name=".Login" />
+        <activity android:name=".LoginUser" />
         <activity android:name=".AddProducto" />
         <activity android:name=".FormularioRegistro" />
         <activity android:name=".MainActivity">

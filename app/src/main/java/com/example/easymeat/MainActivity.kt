@@ -39,23 +39,50 @@ class MainActivity : AppCompatActivity() {
                         email = user.data.get("email").toString()
                         password = user.data.get("password").toString()
                     }
-                    if (etEmail.text.isNotEmpty() && etPassword.text.isNotEmpty()) {
-                        if (email == etEmail.text.toString() && password == etPassword.text.toString()) {
-                            Toast.makeText(this, "Lo lograste", Toast.LENGTH_LONG).show()
+
+                    if (etEmail.text.isNotEmpty()){
+                        if(etPassword.text.isNotEmpty()) {
+                            // el administrador tiene su propio login
                             if(email == "administrador@easymeat.com" && password == "admin"){
                                 val adminlogin = Intent(this, RegisterShop::class.java)
                                 startActivity(adminlogin)
+                            }else {
+                                // login de los usuarios
+                                if (email == etEmail.text.toString() && password == etPassword.text.toString()) {
+                                    val userlogin = Intent(this, LoginUser::class.java)
+                                    startActivity(userlogin)
+
+                                } else {
+                                    //se supone aqui se implementa el login de la tienda
+                                    DB.collection("Tienda")
+                                        .whereEqualTo("email", etEmail.text.toString()).get()
+                                        .addOnSuccessListener { vendedores ->
+                                            for (vendedor in vendedores) {
+                                                email = vendedor.data.get("email").toString()
+                                                password = vendedor.data.get("password").toString()
+                                            }
+                                            if (email == etEmail.text.toString() && password == etPassword.text.toString()) {
+
+                                            } else {
+                                                Toast.makeText(
+                                                    this,
+                                                    "Usuario o Contraseña Incorrecta",
+                                                    Toast.LENGTH_LONG
+                                                ).show()
+                                            }
+                                        }
+                                }
                             }
 
-
-                        }else{
-                            Toast.makeText(this, "F", Toast.LENGTH_LONG).show()
+                        }else {
+                            Toast.makeText(this, "Ingresa La Contraseña", Toast.LENGTH_LONG)
+                                .show()
                         }
                     }else{
-                        Toast.makeText(this, "Por favor llena los campos", Toast.LENGTH_LONG).show()
+                        Toast.makeText(this, "Ingresa El Correo Electrónico", Toast.LENGTH_LONG)
+                            .show()
                     }
                 }
-
         }
     }
 }
