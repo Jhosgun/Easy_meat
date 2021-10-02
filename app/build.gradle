@@ -81,8 +81,4 @@ dependencies {
     //para leer la DB
     implementation 'com.google.firebase:firebase-auth-ktx'
     implementation 'com.google.firebase:firebase-firestore:21.6.0'
-
-    //para agregar animaciones
-    implementation 'pl.droidsonroids.gif:android-gif-drawable:1.2.19'
-
 }

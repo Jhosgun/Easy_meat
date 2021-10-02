@@ -8,6 +8,7 @@
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/Theme.Easymeat">
+        <activity android:name=".Recycler"></activity>
         <activity
             android:name=".RegisterShop"
             android:exported="true" />
