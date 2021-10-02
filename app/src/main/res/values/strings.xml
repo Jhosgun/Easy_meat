@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">easymeat</string>
+    <string name="app_name">Easy Meat</string>
     <string name="title_activity_inicio">MainActivity</string>
     <string name="title_home">Home</string>
     <string name="title_dashboard">Dashboard</string>

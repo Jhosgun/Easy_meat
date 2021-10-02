@@ -190,6 +190,7 @@
                 />
         </com.google.android.material.textfield.TextInputLayout>
 
+
         <Button
             android:id="@+id/btnRegistrar"
             android:layout_width="wrap_content"
