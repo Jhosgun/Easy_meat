@@ -16,7 +16,7 @@
         <activity android:name=".AddProducto" />
         <activity android:name=".FormularioRegistro" />
         <activity android:name=".MainActivity"
-            android:theme="@style/SplashTheme">
+            android:theme="@style/SplasTheme">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

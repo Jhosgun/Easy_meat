@@ -13,7 +13,8 @@
         <item name="android:statusBarColor" tools:targetApi="l">?attr/colorPrimaryVariant</item>
         <!-- Customize your theme here. -->
     </style>
-    <style name="SplashTheme" parent="Theme.Easymeat">
-        <item name="android:windowBackground">@drawable/easymeat</item>
+
+    <style name="SplasTheme" parent="Theme.Easymeat">
+        <item name="android:windowBackground">@drawable/splashscreen</item>
     </style>
 </resources>
