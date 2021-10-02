@@ -17,8 +17,8 @@ class StoreAdapter(private val tiendas: MutableList<Tienda>): RecyclerView.Adapt
 
     override fun onCreateViewHolder(viewGroup: ViewGroup, i: Int): ViewHolder {
 
-        context = parent.context
-        val view = LayoutInflater.from(context).inflate(R.layout.recycler, parent, false)
+        context = viewGroup.context
+        val view = LayoutInflater.from(context).inflate(R.layout.recycler, viewGroup, false)
 
         return ViewHolder(view)
     }
@@ -28,7 +28,7 @@ class StoreAdapter(private val tiendas: MutableList<Tienda>): RecyclerView.Adapt
         val tienda= tiendas[position]
 
         with(holder) {
-            binding.tvNameCV.text = tienda.name
+            binding.tvNameCV1.text = tienda.name
         }
 
     }
