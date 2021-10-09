@@ -6,13 +6,20 @@
     android:layout_height="match_parent"
     tools:context=".LoginStore">
 
-    <TextView
+    <Button
+        android:id="@+id/add_producto_store"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent"
-        android:text="SIUUUUUUU"/>
+        android:text="Añadir producto"
+        tools:layout_editor_absoluteX="27dp"
+        tools:layout_editor_absoluteY="435dp" />
+
+    <Button
+        android:id="@+id/button5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Borrar producto"
+        tools:layout_editor_absoluteX="213dp"
+        tools:layout_editor_absoluteY="435dp" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
