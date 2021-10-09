@@ -8,14 +8,16 @@
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/Theme.Easymeat">
-        <activity android:name=".Recycler"></activity>
+        <activity android:name=".LoginStore"></activity>
+        <activity android:name=".Recycler" />
         <activity
             android:name=".RegisterShop"
             android:exported="true" />
         <activity android:name=".LoginUser" />
         <activity android:name=".AddProducto" />
         <activity android:name=".FormularioRegistro" />
-        <activity android:name=".MainActivity"
+        <activity
+            android:name=".MainActivity"
             android:theme="@style/SplasTheme">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

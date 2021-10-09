@@ -59,8 +59,7 @@ class MainActivity : AppCompatActivity() {
 
                                 } else {
                                     //se supone aqui se implementa el login de la tienda
-                                    DB.collection("Tienda")
-                                        .whereEqualTo("email", etEmail.text.toString()).get()
+                                    DB.collection("Tienda").get()
                                         .addOnSuccessListener { vendedores ->
                                             for (vendedor in vendedores) {
                                                 email = vendedor.data.get("email").toString()

@@ -1,72 +1,66 @@
 package com.example.easymeat
 
+import android.content.Intent
 import android.os.Binder
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.renderscript.ScriptGroup
-import android.widget.LinearLayout
-import android.widget.TextView
-import android.widget.Toast
+import android.util.Log
+import android.view.LayoutInflater
+import android.widget.*
 import androidx.lifecycle.MutableLiveData
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.easymeat.databinding.ActivityLoginUserBinding
 import com.example.easymeat.databinding.ActivityMainBinding
 import com.google.firebase.firestore.FirebaseFirestore
+import com.google.gson.Gson
+import java.lang.Exception
 
 class LoginUser : AppCompatActivity() {
 
-    private lateinit var storeAdapter: StoreAdapter
-    private lateinit var linearLayoutManager: RecyclerView.LayoutManager
-    private lateinit var newArrayList: MutableList<Tienda>
+    var DB = FirebaseFirestore.getInstance()
 
-    private lateinit var binding: ActivityLoginUserBinding
+    // Objeto de la clase TableLayout
+    var tabla_tiendas: TableLayout? = null
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = ActivityLoginUserBinding.inflate(layoutInflater)
-        setContentView(binding.root)
+        setContentView(R.layout.activity_login_user)
 
-        newArrayList= mutableListOf()
+        tabla_tiendas = findViewById(R.id.tabla_tiendas)
 
-        val DB = FirebaseFirestore.getInstance()
-        DB.collection("Tienda").get().addOnSuccessListener { resultQuery ->
-            val listData = mutableListOf<Tienda>()
-            resultQuery.forEach { document ->
-                listData.add(
-                    Tienda(
-                        document.getString("name")!!,
-                        document.getString("address")!!,
-                        document.getString("email")!!,
-                        document.getString("phone")!!
-                    )
-                )
-                //tvName.text = listData.get(0).name.toString()
-                newArrayList.add(Tienda(
-                    document.getString("name")!!,
-                    document.getString("address")!!,
-                    document.getString("email")!!,
-                    document.getString("phone")!!
-                )
-                )
-            }
-            Toast.makeText(
-                this,
-                ""+ newArrayList.get(0).name,
-                Toast.LENGTH_LONG
-            ).show()
+        llenar_tabla_tiendas()
 
-        }
+        val btnVisitar = findViewById<Button>(R.id.btnVisitar)
+        val id = findViewById<TextView>(R.id.tvId)
 
-
-        storeAdapter = StoreAdapter(newArrayList)
-        linearLayoutManager = LinearLayoutManager(this)
-
-        binding.recyclerView.apply {
-            layoutManager = linearLayoutManager
-            adapter = storeAdapter
-        }
 
     }
+
+        //Método que realiza el llenado de la tabla con datos traidos de Firebase
+        private fun llenar_tabla_tiendas() {
+        //Crear la colección y obtener los datos
+        DB.collection("Tienda").get().addOnSuccessListener {
+            //Recorrer la estructura de datos traidos con una función lambda
+                documents ->
+            for (document in documents) {
+                // Crear una nueva fila a partir del modelo "item_table_layout"
+                val row = LayoutInflater.from(this).inflate(R.layout.recycler, null, false)
+                // Obtener los campos de la fila
+                val tvNameCV1 = row.findViewById(R.id.tvNameCV1) as TextView
+                val tvId = row.findViewById<TextView>(R.id.tvId)
+
+                // Agregar datos de la consulta a los campos de la fila
+                tvNameCV1.setText("${document.get("name").toString()}")
+                val id = "${document.id}"
+                tvId.setText(id)
+
+                tabla_tiendas?.addView(row)
+            }
+        }
+    }
+
 
 }
