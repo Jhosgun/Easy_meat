@@ -38,7 +38,6 @@
                         android:id="@+id/tabla_productos"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:background="@color/color_back_red"
                         android:gravity="center_horizontal"
                         android:showDividers="beginning|end">
 

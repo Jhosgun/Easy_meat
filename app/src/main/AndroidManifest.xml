@@ -17,6 +17,8 @@
         <activity android:name=".LoginUser" />
         <activity android:name=".AddProducto" />
         <activity android:name=".FormularioRegistro" />
+        <activity android:name=".VerProductos"/>
+        <activity android:name=".Carrito"/>
         <activity
             android:name=".MainActivity"
             android:theme="@style/SplasTheme">

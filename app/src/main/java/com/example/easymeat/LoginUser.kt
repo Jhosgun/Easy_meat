@@ -51,11 +51,17 @@ class LoginUser : AppCompatActivity() {
                 // Obtener los campos de la fila
                 val tvNameCV1 = row.findViewById(R.id.tvNameCV1) as TextView
                 val tvId = row.findViewById<TextView>(R.id.tvId)
-
+                val btnVisitar = row.findViewById(R.id.btnVisitar) as Button
                 // Agregar datos de la consulta a los campos de la fila
                 tvNameCV1.setText("${document.get("name").toString()}")
                 val id = "${document.id}"
                 tvId.setText(id)
+                btnVisitar.setOnClickListener{
+                    val storage = applicationContext.getSharedPreferences("MyCar", 0)
+                    storage.edit().putString("TiendaView","${document.id}").apply()
+                    val verProductos = Intent(this, VerProductos::class.java)
+                    startActivity(verProductos)
+                }
 
                 tabla_tiendas?.addView(row)
             }

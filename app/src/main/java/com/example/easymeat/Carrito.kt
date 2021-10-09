@@ -61,9 +61,9 @@ class Carrito : AppCompatActivity() {
                 }
                 // Agregar datos de la consulta a los campos de la fila
                 tvName.setText(pro.name)
-                tvPrecio.setText(pro.cost.toString())
-                tvTienda.setText(pro.tienda.toString())
-                tvTipo.setText("")
+                tvPrecio.setText("$ "+pro.cost.toString())
+                tvTienda.setText("Tienda: "+pro.tienda.toString())
+                tvTipo.setText(pro.type.toString())
                 tvCantidad.setText(pro.cantidad.toString())
                 tabla_productos?.addView(row)
             }catch (e:Exception){

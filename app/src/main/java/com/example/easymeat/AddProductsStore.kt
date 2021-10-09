@@ -52,7 +52,7 @@ class AddProductsStore : AppCompatActivity() {
                 tvTienda.setText("${document["shop"].toString()}")
                 tvTipo.setText("${document["type"].toString()}")
                 val id = "${document.id}"
-                var pro = ProductoCarrito(document.get("name").toString(),id,"", document.get("cost").toString().toDouble(),document["shop"].toString(),1)
+                var pro = ProductoCarrito(document.get("name").toString(),id,"", document.get("cost").toString().toDouble(),"${document["type"].toString()}",document["shop"].toString(),1)
                 //Agregar clickListener al botón
                 botonAdd.setOnClickListener{
                     try {
