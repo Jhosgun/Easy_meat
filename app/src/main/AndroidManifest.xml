@@ -8,7 +8,10 @@
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/Theme.Easymeat">
-        <activity android:name=".AddProductsStore"></activity>
+        <activity
+            android:name=".Factura"
+            android:exported="true" />
+        <activity android:name=".AddProductsStore" />
         <activity android:name=".LoginStore" />
         <activity android:name=".Recycler" />
         <activity
@@ -17,8 +20,8 @@
         <activity android:name=".LoginUser" />
         <activity android:name=".AddProducto" />
         <activity android:name=".FormularioRegistro" />
-        <activity android:name=".VerProductos"/>
-        <activity android:name=".Carrito"/>
+        <activity android:name=".VerProductos" />
+        <activity android:name=".Carrito" />
         <activity
             android:name=".MainActivity"
             android:theme="@style/SplasTheme">

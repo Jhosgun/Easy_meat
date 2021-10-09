@@ -1,5 +1,6 @@
 package com.example.easymeat
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
@@ -14,11 +15,16 @@ import java.lang.Exception
 
 class Carrito : AppCompatActivity() {
     var tabla_productos: TableLayout?=null
+    var btn_Carrito:Button?=null
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_carrito)
         tabla_productos = findViewById(R.id.tabla_productos_carrito)
-
+        btn_Carrito = findViewById(R.id.btn_Comprar)
+        btn_Carrito!!.setOnClickListener {
+            val factura = Intent(this, Factura::class.java)
+            startActivity(factura)
+        }
         llenartabla()
     }
 

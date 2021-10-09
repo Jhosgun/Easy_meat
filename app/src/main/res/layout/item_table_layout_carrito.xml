@@ -2,7 +2,7 @@
 
 <TableRow xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:id="@+id/tableRow"
+    android:id="@+id/tableRow_Factura"
     android:layout_width="411dp"
     android:layout_height="732dp"
     android:gravity="center_horizontal">
