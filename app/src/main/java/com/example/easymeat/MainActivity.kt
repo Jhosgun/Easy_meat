@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 //estas 2 librerias son necesarias
 import android.content.Intent
+import android.util.Log
 import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
@@ -59,22 +60,21 @@ class MainActivity : AppCompatActivity() {
 
                                 } else {
                                     //se supone aqui se implementa el login de la tienda
-                                    DB.collection("Tienda").get()
-                                        .addOnSuccessListener { vendedores ->
+                                    DB.collection("Tienda").get().addOnSuccessListener { vendedores ->
                                             for (vendedor in vendedores) {
-                                                email = vendedor.data.get("email").toString()
-                                                password = vendedor.data.get("password").toString()
-                                            }
-                                            if (email == etEmail.text.toString() && password == etPassword.text.toString()) {
+                                                email = vendedor.get("email").toString()
+                                                password = vendedor.get("password").toString()
 
-                                            } else {
-                                                Toast.makeText(
-                                                    this,
-                                                    "Usuario o Contraseña Incorrecta",
-                                                    Toast.LENGTH_LONG
-                                                ).show()
+                                                if (email == etEmail.text.toString() && password == etPassword.text.toString()) {
+                                                    val storelogin = Intent(this, LoginStore::class.java)
+                                                    startActivity(storelogin)
+                                                    Toast.makeText(this, "Bienvenido", Toast.LENGTH_LONG).show()
+                                                }
                                             }
-                                        }
+
+                                        Toast.makeText(this, "Usuario o Contraseña Incorrecta", Toast.LENGTH_LONG).show()
+                                        Log.d("Error",email)
+                                    }
                                 }
                             }
 

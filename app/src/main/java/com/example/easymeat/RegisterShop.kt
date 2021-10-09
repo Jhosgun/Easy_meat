@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
 import android.widget.EditText
+import android.widget.TextView
 import android.widget.Toast
 import com.google.firebase.firestore.FirebaseFirestore
 
@@ -20,6 +21,7 @@ class RegisterShop : AppCompatActivity() {
         val etEmail = findViewById<EditText>(R.id.etEmail)
         val etPhone = findViewById<EditText>(R.id.etPhone)
         val btnAccept = findViewById<Button>(R.id.btnAccept)
+        val etPassword = findViewById<TextView>(R.id.etPassword)
 
         btnAccept.setOnClickListener {
 
@@ -28,7 +30,8 @@ class RegisterShop : AppCompatActivity() {
                     "name" to etName.text.toString(),
                     "address" to etAddress.text.toString(),
                     "email" to etEmail.text.toString(),
-                    "phone" to etPhone.text.toString()
+                    "phone" to etPhone.text.toString(),
+                    "password" to etPassword.text.toString()
                 )
             )
             Toast.makeText(this, "Tienda registrada", Toast.LENGTH_LONG).show()
