@@ -13,8 +13,15 @@ import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
 import com.google.firebase.firestore.FirebaseFirestore
+import kotlin.math.log
 
 class MainActivity : AppCompatActivity() {
+
+    lateinit var  emailUser:String
+    lateinit var passwordUser:String
+    lateinit var  emailStore:String
+    lateinit var passwordStore:String
+
     override fun onCreate(savedInstanceState: Bundle?) {
 
         Thread.sleep(2000)
@@ -34,46 +41,62 @@ class MainActivity : AppCompatActivity() {
 
         val etEmail = findViewById<EditText>(R.id.etEmail)
         val etPassword = findViewById<EditText>(R.id.etPassword)
-        var email:String = ""
-        var password:String = ""
+
 
         btnIngresar.setOnClickListener {
+
+            emailUser = ""
+            passwordUser = ""
+            emailStore = ""
+            passwordStore = ""
 
             DB.collection("Usuario").whereEqualTo("email", etEmail.text.toString()).get()
                 .addOnSuccessListener { users ->
                     for (user in users) {
-                        email = user.data.get("email").toString()
-                        password = user.data.get("password").toString()
+                        emailUser = user.data.get("email").toString()
+                        passwordUser = user.data.get("password").toString()
                     }
 
                     if (etEmail.text.isNotEmpty()){
                         if(etPassword.text.isNotEmpty()) {
                             // el administrador tiene su propio login
-                            if(email == "administrador@easymeat.com" && password == "admin"){
+                            if(emailUser == "administrador@easymeat.com" && passwordUser == "admin"){
+                                sesion = emailUser
+                                Toast.makeText(this, "" + sesion.toString(), Toast.LENGTH_LONG).show()
                                 val adminlogin = Intent(this, RegisterShop::class.java)
                                 startActivity(adminlogin)
                             }else {
                                 // login de los usuarios
-                                if (email == etEmail.text.toString() && password == etPassword.text.toString()) {
+                                if (emailUser == etEmail.text.toString() && passwordUser == etPassword.text.toString()) {
+                                    sesion = emailUser
+                                    Toast.makeText(this, "" + sesion.toString(), Toast.LENGTH_LONG).show()
                                     val userlogin = Intent(this, LoginUser::class.java)
                                     startActivity(userlogin)
 
                                 } else {
+                                    var correct = 0
                                     //se supone aqui se implementa el login de la tienda
                                     DB.collection("Tienda").get().addOnSuccessListener { vendedores ->
                                             for (vendedor in vendedores) {
-                                                email = vendedor.get("email").toString()
-                                                password = vendedor.get("password").toString()
+                                                var email2 = vendedor.get("email").toString()
+                                                var password2 = vendedor.get("password").toString()
 
-                                                if (email == etEmail.text.toString() && password == etPassword.text.toString()) {
-                                                    val storelogin = Intent(this, LoginStore::class.java)
-                                                    startActivity(storelogin)
-                                                    Toast.makeText(this, "Bienvenido", Toast.LENGTH_LONG).show()
+                                                if (email2 == etEmail.text.toString() && password2 == etPassword.text.toString()) {
+                                                    emailStore = email2
+                                                    passwordStore = password2
                                                 }
                                             }
+                                        if (emailStore == etEmail.text.toString() && passwordStore == etPassword.text.toString()) {
+                                            sesion = emailStore
+                                            Toast.makeText(this, "" + sesion.toString(), Toast.LENGTH_LONG).show()
+                                            val storelogin = Intent(this, LoginStore::class.java)
+                                            startActivity(storelogin)
+                                            Toast.makeText(this, "Bienvenido", Toast.LENGTH_LONG).show()
+                                        }else{
+                                            Toast.makeText(this, "Usuario o Contraseña Incorrecta", Toast.LENGTH_LONG).show()
 
-                                        Toast.makeText(this, "Usuario o Contraseña Incorrecta", Toast.LENGTH_LONG).show()
-                                        Log.d("Error",email)
+                                        }
+
                                     }
                                 }
                             }
@@ -86,6 +109,7 @@ class MainActivity : AppCompatActivity() {
                         Toast.makeText(this, "Ingresa El Correo Electrónico", Toast.LENGTH_LONG)
                             .show()
                     }
+
                 }
         }
     }

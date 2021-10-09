@@ -42,19 +42,11 @@
                         android:id="@+id/tvTipo"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_weight="0.25"
-                        android:text="TextView" />
-
-                    <TextView
-                        android:id="@+id/tvTienda"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginLeft="5dp"
-                        android:layout_marginRight="12dp"
+                        android:layout_marginRight="5dp"
                         android:layout_weight="0.25"
                         android:text="TextView"
-                        android:textColor="@color/browser_actions_title_color"
-                        android:textSize="12sp" />
+                        android:textAlignment="center" />
+
                 </LinearLayout>
 
                 <LinearLayout
@@ -89,6 +81,16 @@
                     android:layout_height="17dp"
                     android:orientation="horizontal">
 
+                    <TextView
+                        android:id="@+id/tvTienda"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="15dp"
+                        android:layout_marginRight="10dp"
+                        android:layout_weight="0.25"
+                        android:text="TextView"
+                        android:textColor="#27242C"
+                        android:textSize="12sp" />
                 </LinearLayout>
 
                 <View

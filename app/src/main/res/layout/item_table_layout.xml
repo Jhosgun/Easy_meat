@@ -9,13 +9,15 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="59dp"
+        android:layout_height="72dp"
         android:layout_gravity="fill_horizontal"
+        android:background="#00FFFFFF"
         android:orientation="horizontal">
 
         <LinearLayout
             android:layout_width="338dp"
             android:layout_height="60dp"
+            android:background="#F7E5E5E6"
             android:orientation="vertical">
 
             <LinearLayout
@@ -38,7 +40,8 @@
                     android:layout_height="wrap_content"
                     android:layout_marginRight="12dp"
                     android:layout_weight="0.25"
-                    android:text="TextView" />
+                    android:text="TextView"
+                    android:textAlignment="center" />
             </LinearLayout>
 
             <LinearLayout
@@ -53,7 +56,7 @@
                     android:layout_marginLeft="15dp"
                     android:layout_weight="0.5"
                     android:text="TextView"
-                    android:textColor="@color/browser_actions_title_color"
+                    android:textColor="#27242C"
                     android:textSize="12sp" />
 
                 <TextView
@@ -86,8 +89,9 @@
         </LinearLayout>
 
         <LinearLayout
-            android:layout_width="65dp"
+            android:layout_width="71dp"
             android:layout_height="wrap_content"
+            android:background="#F7E5E5E6"
             android:orientation="vertical">
             android:layout_height="60dp"
 
