@@ -1,7 +1,5 @@
 package com.example.easymeat
 
-
-import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
@@ -14,35 +12,39 @@ import com.google.firebase.firestore.FirebaseFirestore
 import com.google.gson.Gson
 import java.lang.Exception
 
-// Permite la visualización de productos en una tabla
-class VerProductos : AppCompatActivity() {
+class EditTiendaProduct : AppCompatActivity() {
+
     var DB = FirebaseFirestore.getInstance()
     // Objeto de la clase TableLayout
-    var tabla_productos:TableLayout?=null
-    var botonCar:Button ?= null
+    var tabla_productos: TableLayout?=null
+    lateinit var idStore: String
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_ver_productos)
+        setContentView(R.layout.activity_edit_tienda_product)
         tabla_productos = findViewById(R.id.tabla_productos)
-        botonCar = findViewById(R.id.botonCar) as Button
-        botonCar!!.setOnClickListener{
-            val carrito = Intent(this, Carrito::class.java)
-            startActivity(carrito)
-        }
         llenartabla()
     }
 
     //Método que realiza el llenado de la tabla con datos traidos de Firebase
     private fun llenartabla(){
+        //encontrar la información de la tienda
+        DB.collection("Tienda").get().addOnSuccessListener { tiendas ->
+            for (tienda in tiendas) {
+                if (sesion == tienda.get("email").toString()) {
+                    idStore = tienda.id
+                }
+            }
+        }
         //buscamos los productos asociados a esas tiendas
         DB.collection("Tienda_Producto").get().addOnSuccessListener {
-            tiendas_productos ->
+                tiendas_productos ->
             for (tienda_producto in tiendas_productos){
                 //Crear la colección y obtener los datos
                 DB.collection("Producto").get().addOnSuccessListener {
-                    documents ->
+                        documents ->
                     for (document in documents){
-                        if(tienda_producto.get("idStore").toString()== idTienda &&
+                        if(tienda_producto.get("idStore").toString()== idStore &&
                             tienda_producto.get("idProduct").toString()==document.id){
                             val row = LayoutInflater.from(this).inflate(R.layout.item_table_layout, null, false)
                             // Obtener los campos de la fila
@@ -57,15 +59,9 @@ class VerProductos : AppCompatActivity() {
                             tvTienda.setText("${document["shop"].toString()}")
                             tvTipo.setText("${document["type"].toString()}")
                             val id = "${document.id}"
-                            var pro = ProductoCarrito(
-                                document.get("name").toString(),
-                                id,
-                                "",
-                                document.get("cost").toString().toDouble(),
-                                "${document["type"].toString()}",
-                                document["shop"].toString(),
-                                1
-                            )
+                            var pro = ProductoCarrito(document.get("name").toString(), id, "",
+                                document.get("cost").toString().toDouble(), "${document["type"].toString()}",
+                                document["shop"].toString(), 1)
                             //Agregar clickListener al botón
                             botonAdd.setOnClickListener {
                                 try {

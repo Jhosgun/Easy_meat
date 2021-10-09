@@ -59,6 +59,7 @@ class LoginUser : AppCompatActivity() {
                 btnVisitar.setOnClickListener{
                     val storage = applicationContext.getSharedPreferences("MyCar", 0)
                     storage.edit().putString("TiendaView","${document.id}").apply()
+                    idTienda = document.id
                     val verProductos = Intent(this, VerProductos::class.java)
                     startActivity(verProductos)
                 }

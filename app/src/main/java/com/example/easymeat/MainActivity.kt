@@ -62,14 +62,14 @@ class MainActivity : AppCompatActivity() {
                             // el administrador tiene su propio login
                             if(emailUser == "administrador@easymeat.com" && passwordUser == "admin"){
                                 sesion = emailUser
-                                Toast.makeText(this, "" + sesion.toString(), Toast.LENGTH_LONG).show()
+                                Toast.makeText(this, "Bienvenido", Toast.LENGTH_LONG).show()
                                 val adminlogin = Intent(this, RegisterShop::class.java)
                                 startActivity(adminlogin)
                             }else {
                                 // login de los usuarios
                                 if (emailUser == etEmail.text.toString() && passwordUser == etPassword.text.toString()) {
                                     sesion = emailUser
-                                    Toast.makeText(this, "" + sesion.toString(), Toast.LENGTH_LONG).show()
+                                    Toast.makeText(this, "Bienvenido", Toast.LENGTH_LONG).show()
                                     val userlogin = Intent(this, LoginUser::class.java)
                                     startActivity(userlogin)
 
@@ -88,10 +88,9 @@ class MainActivity : AppCompatActivity() {
                                             }
                                         if (emailStore == etEmail.text.toString() && passwordStore == etPassword.text.toString()) {
                                             sesion = emailStore
-                                            Toast.makeText(this, "" + sesion.toString(), Toast.LENGTH_LONG).show()
+                                            Toast.makeText(this, "Bienvenido", Toast.LENGTH_LONG).show()
                                             val storelogin = Intent(this, LoginStore::class.java)
                                             startActivity(storelogin)
-                                            Toast.makeText(this, "Bienvenido", Toast.LENGTH_LONG).show()
                                         }else{
                                             Toast.makeText(this, "Usuario o Contraseña Incorrecta", Toast.LENGTH_LONG).show()
 
