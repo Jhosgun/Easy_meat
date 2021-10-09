@@ -13,6 +13,7 @@ import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
 import com.google.firebase.firestore.FirebaseFirestore
+import kotlin.math.log
 
 class MainActivity : AppCompatActivity() {
 
@@ -41,6 +42,7 @@ class MainActivity : AppCompatActivity() {
         val etEmail = findViewById<EditText>(R.id.etEmail)
         val etPassword = findViewById<EditText>(R.id.etPassword)
 
+
         btnIngresar.setOnClickListener {
 
             emailUser = ""
@@ -59,11 +61,15 @@ class MainActivity : AppCompatActivity() {
                         if(etPassword.text.isNotEmpty()) {
                             // el administrador tiene su propio login
                             if(emailUser == "administrador@easymeat.com" && passwordUser == "admin"){
+                                sesion = emailUser
+                                Toast.makeText(this, "" + sesion.toString(), Toast.LENGTH_LONG).show()
                                 val adminlogin = Intent(this, RegisterShop::class.java)
                                 startActivity(adminlogin)
                             }else {
                                 // login de los usuarios
                                 if (emailUser == etEmail.text.toString() && passwordUser == etPassword.text.toString()) {
+                                    sesion = emailUser
+                                    Toast.makeText(this, "" + sesion.toString(), Toast.LENGTH_LONG).show()
                                     val userlogin = Intent(this, LoginUser::class.java)
                                     startActivity(userlogin)
 
@@ -81,6 +87,8 @@ class MainActivity : AppCompatActivity() {
                                                 }
                                             }
                                         if (emailStore == etEmail.text.toString() && passwordStore == etPassword.text.toString()) {
+                                            sesion = emailStore
+                                            Toast.makeText(this, "" + sesion.toString(), Toast.LENGTH_LONG).show()
                                             val storelogin = Intent(this, LoginStore::class.java)
                                             startActivity(storelogin)
                                             Toast.makeText(this, "Bienvenido", Toast.LENGTH_LONG).show()
