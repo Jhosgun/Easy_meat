@@ -11,6 +11,7 @@
         <activity
             android:name=".Factura"
             android:exported="true" />
+        <activity android:name=".EditTiendaProduct"></activity>
         <activity android:name=".AddProductsStore" />
         <activity android:name=".LoginStore" />
         <activity android:name=".Recycler" />

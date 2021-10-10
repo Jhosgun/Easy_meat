@@ -33,16 +33,15 @@ class VerProductos : AppCompatActivity() {
     }
 
     //Método que realiza el llenado de la tabla con datos traidos de Firebase
-    private fun llenartabla(){
-        //Crear la colección y obtener los datos
+    private fun llenartabla() {
         val storage = applicationContext.getSharedPreferences("MyCar", 0)
         val tiendaId = storage.getString("TiendaView","DEFAULT") as String
-        DB.collection("Producto_Tienda_Prueba").whereEqualTo("tienda",tiendaId).get().addOnSuccessListener {
+        DB.collection("Tienda_Producto").whereEqualTo("idStore",tiendaId).get().addOnSuccessListener {
             //Recorrer la estructura de datos traidos con una función lambda
-            documents ->
-            for(document in documents){
+                documents ->
+            for (document in documents) {
                 // Crear una nueva fila a partir del modelo "item_table_layout"
-                val row = LayoutInflater.from(this).inflate(R.layout.item_table_layout, null,false)
+                val row = LayoutInflater.from(this).inflate(R.layout.item_table_layout, null, false)
                 // Obtener los campos de la fila
                 val tvName = row.findViewById(R.id.tvName) as TextView
                 val tvPrecio = row.findViewById(R.id.tvPrecio) as TextView
@@ -53,53 +52,54 @@ class VerProductos : AppCompatActivity() {
                 var name_producto = "No encontrado"
                 var type_producto = "Sin tipo"
                 //val dataName= ArrayBlockingQueue<String>(1)
-                DB.collection("Tienda").document(tiendaId).get().addOnSuccessListener {
-                    documents ->
+                DB.collection("Tienda").document(tiendaId).get().addOnSuccessListener { documents ->
                     name_tienda = "${documents.get("name").toString()}"
                 }.addOnCompleteListener {
-                    DB.collection("Producto").document("${document.get("producto").toString()}")
+                    DB.collection("Producto").document("${document.get("idProduct").toString()}")
                         .get().addOnSuccessListener { document ->
                             name_producto = document.get("name").toString()
                             type_producto = document.get("type").toString()
-                    }.addOnCompleteListener {
-                        // Agregar datos de la consulta a los campos de la fila
-                        tvName.setText("${name_producto}")
-                        tvPrecio.setText("\$: ${document["precio"].toString()}")
-                        tvTipo.setText("${type_producto}")
-                        tvTienda.setText(name_tienda)
-                        val id = "${document.id}"
-                        var pro = ProductoCarrito(
-                            name_producto,
-                            id,
-                            "",
-                            document.get("precio").toString().toDouble(),
-                            type_producto,
-                            name_tienda,
-                            1
-                        )
-                        //Agregar clickListener al botón
-                        botonAdd.setOnClickListener {
-                            try {
-                                var gson = Gson();
-                                val storage = applicationContext.getSharedPreferences("MyCar", 0)
-                                if (storage.contains(id)) {
-                                    val prdJson2 = gson.toJson(pro);
-                                    val pros = storage.getString(id, prdJson2)
-                                    pro = gson.fromJson(pros, ProductoCarrito::class.java)
-                                    pro.cantidad += 1
-                                } else {
-                                    pro.cantidad = 1
-                                }
-                                val prdJson = gson.toJson(pro);
+                        }.addOnCompleteListener {
+                            // Agregar datos de la consulta a los campos de la fila
+                            tvName.setText("${name_producto}")
+                            tvPrecio.setText("\$: ${document["cost"].toString()}")
+                            tvTipo.setText("${type_producto}")
+                            //tvTienda.setText(name_tienda)
+                            val id = "${document.id}"
+                            var pro = ProductoCarrito(
+                                name_producto,
+                                id,
+                                "",
+                                document.get("cost").toString().toDouble(),
+                                type_producto,
+                                name_tienda,
+                                1
+                            )
+                            //Agregar clickListener al botón
+                            botonAdd.setOnClickListener {
+                                try {
+                                    var gson = Gson();
+                                    val storage =
+                                        applicationContext.getSharedPreferences("MyCar", 0)
+                                    if (storage.contains(id)) {
+                                        val prdJson2 = gson.toJson(pro);
+                                        val pros = storage.getString(id, prdJson2)
+                                        pro = gson.fromJson(pros, ProductoCarrito::class.java)
+                                        pro.cantidad += 1
+                                    } else {
+                                        pro.cantidad = 1
+                                    }
+                                    val prdJson = gson.toJson(pro);
 
-                                storage.edit().putString(id, prdJson).apply();
-                                Toast.makeText(this, "Producto Agregado", Toast.LENGTH_LONG).show()
-                            } catch (e: Exception) {
-                                Log.d("Error", e.toString())
+                                    storage.edit().putString(id, prdJson).apply();
+                                    Toast.makeText(this, "Producto Agregado", Toast.LENGTH_LONG)
+                                        .show()
+                                } catch (e: Exception) {
+                                    Log.d("Error", e.toString())
+                                }
                             }
+                            tabla_productos?.addView(row)
                         }
-                        tabla_productos?.addView(row)
-                    }
                 }
             }
         }

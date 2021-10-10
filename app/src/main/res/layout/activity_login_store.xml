@@ -5,21 +5,27 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".LoginStore">
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintEnd_toEndOf="parent"
+    android:gravity="center"
+    android:orientation="vertical">
 
     <Button
         android:id="@+id/add_producto_store"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Añadir producto"
-        tools:layout_editor_absoluteX="27dp"
-        tools:layout_editor_absoluteY="435dp" />
+        tools:ignore="MissingConstraints" />
 
     <Button
-        android:id="@+id/button5"
+        android:id="@+id/btnEditTiendaProduct"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Borrar producto"
-        tools:layout_editor_absoluteX="213dp"
-        tools:layout_editor_absoluteY="435dp" />
+        android:text="Modificar producto"
+        tools:ignore="MissingConstraints" />
+</LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
