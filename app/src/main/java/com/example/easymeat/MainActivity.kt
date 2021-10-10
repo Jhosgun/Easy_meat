@@ -58,6 +58,8 @@ class MainActivity : AppCompatActivity() {
                     }
 
                     if (etEmail.text.isNotEmpty()){
+                        val storage = applicationContext.getSharedPreferences("User", 0)
+                        storage.edit().clear().apply()
                         if(etPassword.text.isNotEmpty()) {
                             // el administrador tiene su propio login
                             if(emailUser == "administrador@easymeat.com" && passwordUser == "admin"){
@@ -71,16 +73,19 @@ class MainActivity : AppCompatActivity() {
                                     sesion = emailUser
                                     Toast.makeText(this, "Bienvenido", Toast.LENGTH_LONG).show()
                                     val userlogin = Intent(this, LoginUser::class.java)
+
+                                    storage.edit().putString("user",emailUser).apply()
                                     startActivity(userlogin)
 
                                 } else {
                                     var correct = 0
+                                    var idShop = ""
                                     //se supone aqui se implementa el login de la tienda
                                     DB.collection("Tienda").get().addOnSuccessListener { vendedores ->
                                             for (vendedor in vendedores) {
                                                 var email2 = vendedor.get("email").toString()
                                                 var password2 = vendedor.get("password").toString()
-
+                                                idShop = vendedor.id
                                                 if (email2 == etEmail.text.toString() && password2 == etPassword.text.toString()) {
                                                     emailStore = email2
                                                     passwordStore = password2
@@ -89,6 +94,7 @@ class MainActivity : AppCompatActivity() {
                                         if (emailStore == etEmail.text.toString() && passwordStore == etPassword.text.toString()) {
                                             sesion = emailStore
                                             Toast.makeText(this, "Bienvenido", Toast.LENGTH_LONG).show()
+                                            storage.edit().putString("shop",idShop).apply()
                                             val storelogin = Intent(this, LoginStore::class.java)
                                             startActivity(storelogin)
                                         }else{

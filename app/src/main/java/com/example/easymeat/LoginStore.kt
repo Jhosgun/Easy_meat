@@ -18,6 +18,7 @@ class LoginStore : AppCompatActivity() {
 
         val btnAddProductStore = findViewById<Button>(R.id.add_producto_store)
         val btnEditTiendaProduct = findViewById<Button>(R.id.btnEditTiendaProduct)
+        val btnPedidos = findViewById<Button>(R.id.btnPedidos)
         btnAddProductStore.setOnClickListener {
             val addProductsStore = Intent(this, AddProductsStore::class.java)
             startActivity(addProductsStore)
@@ -25,6 +26,10 @@ class LoginStore : AppCompatActivity() {
         btnEditTiendaProduct.setOnClickListener {
             val editProduct = Intent(this, EditTiendaProduct::class.java)
             startActivity(editProduct)
+        }
+        btnPedidos.setOnClickListener {
+            val verPedidos = Intent(this, PedidosTienda::class.java)
+            startActivity(verPedidos)
         }
     }
 }

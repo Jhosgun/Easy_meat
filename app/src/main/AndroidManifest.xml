@@ -9,9 +9,12 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Easymeat">
         <activity
+            android:name=".PedidosTienda"
+            android:exported="true" />
+        <activity
             android:name=".Factura"
             android:exported="true" />
-        <activity android:name=".EditTiendaProduct"></activity>
+        <activity android:name=".EditTiendaProduct" />
         <activity android:name=".AddProductsStore" />
         <activity android:name=".LoginStore" />
         <activity android:name=".Recycler" />

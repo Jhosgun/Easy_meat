@@ -9,14 +9,14 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="21dp"
+        android:layout_height="25dp"
         android:layout_gravity="fill_horizontal"
         android:background="#00FFFFFF"
         android:orientation="horizontal">
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="22dp"
+            android:layout_height="31dp"
             android:orientation="vertical">
 
             <LinearLayout
@@ -25,43 +25,47 @@
                 android:orientation="horizontal">
 
                 <TextView
-                    android:id="@+id/tvNombre_Factura"
+                    android:id="@+id/tvNombre_header"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="2dp"
                     android:layout_marginRight="3dp"
                     android:layout_weight="0.25"
+                    android:textColor="@color/black"
                     android:textSize="12sp" />
 
                 <TextView
-                    android:id="@+id/tvTienda_Fac"
+                    android:id="@+id/tvTienda_header"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_weight="0.25" />
+                    android:layout_weight="0.25"
+                    android:textColor="@color/black" />
 
                 <TextView
-                    android:id="@+id/tvPrecioUni_Factura"
+                    android:id="@+id/tvPrecioUni_header"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginRight="3dp"
                     android:layout_weight="0.27"
+                    android:textColor="@color/black"
                     android:textSize="12sp" />
 
                 <TextView
-                    android:id="@+id/tvCantidad_Factura"
+                    android:id="@+id/tvCantidad_header"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginRight="3dp"
                     android:layout_weight="0.30"
-                    android:textAlignment="center"
+                    android:textColor="@color/black"
                     android:textSize="12sp" />
 
                 <TextView
-                    android:id="@+id/tvPrecioT_Factura"
+                    android:id="@+id/tvPrecioT_header"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginRight="2dp"
                     android:layout_weight="0.23"
+                    android:textColor="@color/browser_actions_text_color"
                     android:textSize="12sp" />
             </LinearLayout>
 
@@ -74,7 +78,7 @@
                     android:id="@+id/divider5"
                     android:layout_width="match_parent"
                     android:layout_height="2dp"
-                    android:layout_marginTop="0dp"
+                    android:layout_marginTop="-10dp"
                     android:background="?android:attr/listDivider" />
             </LinearLayout>
 

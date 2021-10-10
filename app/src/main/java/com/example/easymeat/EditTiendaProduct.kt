@@ -50,7 +50,7 @@ class EditTiendaProduct : AppCompatActivity() {
                             // Obtener los campos de la fila
                             val tvName = row.findViewById(R.id.tvName) as TextView
                             val tvPrecio = row.findViewById(R.id.tvPrecio) as TextView
-                            val tvTienda = row.findViewById(R.id.tvTienda) as TextView
+                            val tvTienda = row.findViewById(R.id.tvCliente_Pedido) as TextView
                             val tvTipo = row.findViewById(R.id.tvTipo) as TextView
                             val botonAdd = row.findViewById(R.id.buttonAdd) as Button
                             // Agregar datos de la consulta a los campos de la fila

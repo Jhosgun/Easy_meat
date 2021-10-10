@@ -21,7 +21,7 @@
             android:id="@+id/txFactura"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Factura"
+            android:text="Pedido"
             android:textAlignment="center"
             android:textColor="#673AB7"
             android:textSize="24sp" />
@@ -54,14 +54,13 @@
                     <TextView
                         android:id="@+id/tvTienda_Factura"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:text="Tienda: " />
+                        android:layout_height="wrap_content" />
 
                     <TextView
                         android:id="@+id/textView10"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="TextView" />
+                        android:text="Productos:" />
 
                 </LinearLayout>
 
@@ -74,44 +73,139 @@
                     android:orientation="vertical">
 
                     <TextView
+                        android:id="@+id/tvFecha_Factura"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Fecha:" />
+
+                    <TextView
                         android:id="@+id/textView4"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content" />
 
-                    <TextView
-                        android:id="@+id/tvFecha_Factura"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:text="Fecha" />
                 </LinearLayout>
             </LinearLayout>
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
+                android:layout_marginTop="15dp"
+                android:layout_weight="0.5"
                 android:orientation="horizontal">
 
-                <TableLayout
-                    android:id="@+id/tabla_factura"
+                <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent">
+                    android:layout_height="match_parent"
+                    android:orientation="vertical">
 
-                    <TableRow
+                    <TableLayout
+                        android:id="@+id/tabla_factura"
                         android:layout_width="match_parent"
-                        android:layout_height="match_parent" />
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1">
 
-                    <TableRow
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent" />
+                        <TableRow
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent" />
 
-                    <TableRow
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent" />
+                        <TableRow
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent" />
 
-                    <TableRow
+                        <TableRow
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent" />
+
+                        <TableRow
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent" />
+                    </TableLayout>
+
+                    <TextView
+                        android:id="@+id/tvAviso"
                         android:layout_width="match_parent"
-                        android:layout_height="match_parent" />
-                </TableLayout>
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginRight="10dp"
+                        android:layout_weight="0.01"
+                        android:text="*Se generan pedidos individuales para cada tienda"
+                        android:textColor="@color/browser_actions_text_color"
+                        android:textSize="12sp"
+                        android:textStyle="bold"
+                        android:visibility="invisible" />
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="0.7"
+                android:orientation="horizontal">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="15dp"
+                    android:layout_marginRight="3dp"
+                    android:layout_weight="0.5"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/tvTotal_Factura"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Total: "
+                        android:textAlignment="center" />
+
+                    <Button
+                        android:id="@+id/btnAceptar"
+                        android:layout_width="match_parent"
+                        android:layout_height="66dp"
+                        android:layout_marginLeft="25dp"
+                        android:layout_marginRight="23dp"
+                        android:backgroundTint="@color/verde"
+                        android:text="Aceptar"
+                        android:visibility="invisible"
+                        app:icon="@drawable/fui_ic_check_circle_black_128dp"
+                        app:iconSize="25dp"
+                        app:iconTint="#C3FDFDFD"
+                        app:iconTintMode="src_in" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="3dp"
+                    android:layout_marginRight="15dp"
+                    android:layout_weight="0.5"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/textView13"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="casual"
+                        android:text="Easy Meat ©"
+                        android:textAlignment="center"
+                        android:textAllCaps="false"
+                        android:textStyle="bold|italic" />
+
+                    <Button
+                        android:id="@+id/btnCancelar"
+                        android:layout_width="match_parent"
+                        android:layout_height="66dp"
+                        android:layout_marginLeft="15dp"
+                        android:layout_marginRight="20dp"
+                        android:backgroundTint="@color/rojo"
+                        android:text="Rechazar"
+                        android:visibility="invisible"
+                        app:icon="@android:drawable/ic_menu_close_clear_cancel"
+                        app:iconPadding="5dp"
+                        app:iconTint="#CEFDFDFD"
+                        app:iconTintMode="src_in" />
+                </LinearLayout>
             </LinearLayout>
         </LinearLayout>
 
