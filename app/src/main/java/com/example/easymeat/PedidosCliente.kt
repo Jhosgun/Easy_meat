@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
+import android.view.View
 import android.widget.Button
 import android.widget.TableLayout
 import android.widget.TextView
@@ -16,7 +17,7 @@ import java.text.SimpleDateFormat
 import java.util.*
 import kotlin.collections.ArrayList
 
-class PedidosTienda : AppCompatActivity() {
+class PedidosCliente : AppCompatActivity() {
     var DB = FirebaseFirestore.getInstance()
     var tabla_pedidos: TableLayout?=null
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -27,12 +28,10 @@ class PedidosTienda : AppCompatActivity() {
     }
 
     private fun llenarTabla(){
-
         val storage = applicationContext.getSharedPreferences("User", 0)
-        val idTienda = storage.getString("shop","DEFAULT")
-        Log.d("Tienda",idTienda.toString())
+        val idCliente = storage.getString("user","DEFAULT")
         var gson = Gson();
-        DB.collection("Pedido").whereEqualTo("shop",idTienda).whereIn("state",
+        DB.collection("Pedido").whereEqualTo("user",idCliente).whereIn("state",
             listOf("En Proceso","Aceptado")).get().addOnSuccessListener {
             documents ->
             for(document in documents){
@@ -51,11 +50,9 @@ class PedidosTienda : AppCompatActivity() {
                             .addOnSuccessListener { document ->
                                 productosM.add(pro)
 
-                                Log.d("Evalue",total.toString()+" | "+idTienda.toString()+" :? "+document.get("idStore"))
-                                Log.d("TAMANO",productosM.size.toString())
                             }.addOnCompleteListener {
                                 if (productosM.size > 0 && i == productosL.size - 1) {
-                                    Log.d("ENTRAR", "entró xd")
+
                                     val row = LayoutInflater.from(this)
                                         .inflate(
                                             R.layout.item_table_layout_pedidos_tienda,
@@ -68,16 +65,28 @@ class PedidosTienda : AppCompatActivity() {
                                     val tvCliente = row.findViewById(R.id.tvCliente_Pedido) as TextView
                                     val tvEstado = row.findViewById(R.id.tvEstado_Pedido) as TextView
                                     val btnVer = row.findViewById(R.id.btnVer_Pedido) as Button
+                                    if (document.getString("state").equals("Aceptado")) {
+                                        val btnCnf = row.findViewById(R.id.btnConf) as Button
+                                        btnCnf.visibility = View.VISIBLE
+                                        btnCnf.setOnClickListener {
+                                            var DB = FirebaseFirestore.getInstance()
+                                            DB.collection("Pedido").document(document.id)
+                                                .update("state", "Completado")
+                                            tvEstado!!.setText("Completado")
+                                            btnCnf.visibility = View.INVISIBLE
+                                        }
+                                    }
 
                                     DB.collection("Usuario").document("${document.get("user")}")
                                         .get().addOnSuccessListener { document2 ->
                                         tvAddres.setText(document2.get("address").toString()+" barrio "+document2.get("barrio").toString())
-                                        tvCliente.setText(
-                                            document2.get("names").toString() + " " + document2.get(
-                                                "lastnames"
-                                            ).toString()
-                                        )
                                     }
+                                    DB.collection("Tienda").document("${document.get("shop")}")
+                                        .get().addOnSuccessListener { document2 ->
+                                            tvCliente.setText(
+                                                document2.get("name").toString()
+                                            )
+                                        }
 
                                     var fecha: Timestamp = document.get("date") as Timestamp
                                     val sdf = SimpleDateFormat("dd/M/yyyy hh:mm")
@@ -91,7 +100,6 @@ class PedidosTienda : AppCompatActivity() {
                                         val storage = applicationContext.getSharedPreferences("MyCar", 0)
                                         val storage2 = applicationContext.getSharedPreferences("MyFactura",0)
                                         val storage3 = applicationContext.getSharedPreferences("User", 0)
-                                        val usuario = storage3.getString("user","DEFAULT")
                                         storage2.edit().clear().apply()
                                         productosM.forEach {
                                             try {
@@ -105,11 +113,7 @@ class PedidosTienda : AppCompatActivity() {
                                         }
 
                                         val storageDetails = applicationContext.getSharedPreferences("MyFacturaDetails", 0)
-                                        var venta = "not"
-                                        if(document.getString("state").equals("En Proceso")){
-                                            venta = "yes"
-                                        }
-                                        storageDetails.edit().putString("date",fechaStr).putString("venta",venta).putString("id",document.id).putString("state",document.get("state").toString()).apply()
+                                        storageDetails.edit().putString("date",fechaStr).putString("id",document.id).putString("state",document.get("state").toString()).apply()
 
                                         val factura = Intent(this, Factura::class.java)
                                         startActivity(factura)

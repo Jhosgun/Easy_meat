@@ -26,6 +26,8 @@
         <activity android:name=".FormularioRegistro" />
         <activity android:name=".VerProductos" />
         <activity android:name=".Carrito" />
+        <activity android:name=".PedidosCliente"/>
+        <activity android:name=".PedidosTiendaInact"/>
         <activity
             android:name=".MainActivity"
             android:theme="@style/SplasTheme">

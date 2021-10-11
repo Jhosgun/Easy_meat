@@ -85,10 +85,11 @@ class MainActivity : AppCompatActivity() {
                                             for (vendedor in vendedores) {
                                                 var email2 = vendedor.get("email").toString()
                                                 var password2 = vendedor.get("password").toString()
-                                                idShop = vendedor.id
+
                                                 if (email2 == etEmail.text.toString() && password2 == etPassword.text.toString()) {
                                                     emailStore = email2
                                                     passwordStore = password2
+                                                    idShop = vendedor.id
                                                 }
                                             }
                                         if (emailStore == etEmail.text.toString() && passwordStore == etPassword.text.toString()) {

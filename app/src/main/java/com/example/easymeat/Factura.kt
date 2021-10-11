@@ -41,20 +41,26 @@ class Factura : AppCompatActivity() {
         if(venta.equals("yes")){
             val idF = storage.getString("id","DEFAULT")
             var btnAccept = findViewById(R.id.btnAceptar) as Button
+            var btnCancel = findViewById(R.id.btnCancelar) as Button
+
+
             btnAccept.visibility = View.VISIBLE
             btnAccept.setOnClickListener {
                 var DB = FirebaseFirestore.getInstance()
                 DB.collection("Pedido").document(idF.toString()).update("state","Aceptado").addOnSuccessListener {
                     tvEstado!!.setText("Estado: Aceptado")
                 }
-
+                btnAccept.visibility = View.INVISIBLE
+                btnCancel.visibility = View.INVISIBLE
             }
-            var btnCancel = findViewById(R.id.btnCancelar) as Button
+
             btnCancel.visibility = View.VISIBLE
             btnCancel.setOnClickListener {
                 var DB = FirebaseFirestore.getInstance()
                 DB.collection("Pedido").document(idF.toString()).update("state","Cancelado")
                 tvEstado!!.setText("Estado: Cancelado")
+                btnAccept.visibility = View.INVISIBLE
+                btnCancel.visibility = View.INVISIBLE
             }
         }else{
             var tvAviso = findViewById(R.id.tvAviso) as TextView

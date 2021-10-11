@@ -16,7 +16,7 @@ import java.text.SimpleDateFormat
 import java.util.*
 import kotlin.collections.ArrayList
 
-class PedidosTienda : AppCompatActivity() {
+class PedidosTiendaInact : AppCompatActivity() {
     var DB = FirebaseFirestore.getInstance()
     var tabla_pedidos: TableLayout?=null
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -27,13 +27,11 @@ class PedidosTienda : AppCompatActivity() {
     }
 
     private fun llenarTabla(){
-
         val storage = applicationContext.getSharedPreferences("User", 0)
         val idTienda = storage.getString("shop","DEFAULT")
-        Log.d("Tienda",idTienda.toString())
         var gson = Gson();
         DB.collection("Pedido").whereEqualTo("shop",idTienda).whereIn("state",
-            listOf("En Proceso","Aceptado")).get().addOnSuccessListener {
+            listOf("Completado","Cancelado")).get().addOnSuccessListener {
             documents ->
             for(document in documents){
                 //Log.d("ARRAY","${document.get("products")!!::class.qualifiedName}")
@@ -49,9 +47,11 @@ class PedidosTienda : AppCompatActivity() {
                         total += pro.cost*pro.cantidad
                         DB.collection("Tienda_Producto").document(pro.id).get()
                             .addOnSuccessListener { document ->
-                                productosM.add(pro)
+                                if (idTienda?.equals(document.get("idStore")) == true) {
+                                    productosM.add(pro)
 
-                                Log.d("Evalue",total.toString()+" | "+idTienda.toString()+" :? "+document.get("idStore"))
+                                }
+                                Log.d("Evalue",idTienda.toString()+" :? "+document.get("idStore"))
                                 Log.d("TAMANO",productosM.size.toString())
                             }.addOnCompleteListener {
                                 if (productosM.size > 0 && i == productosL.size - 1) {

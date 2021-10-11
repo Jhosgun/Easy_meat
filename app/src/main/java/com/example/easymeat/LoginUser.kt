@@ -32,7 +32,11 @@ class LoginUser : AppCompatActivity() {
         tabla_tiendas = findViewById(R.id.tabla_tiendas)
 
         llenar_tabla_tiendas()
-
+        var btnPedidos = findViewById(R.id.btnVerPedidosCli) as Button
+        btnPedidos.setOnClickListener {
+            val verPedidos = Intent(this, PedidosCliente::class.java)
+            startActivity(verPedidos)
+        }
         val btnVisitar = findViewById<Button>(R.id.btnVisitar)
         val id = findViewById<TextView>(R.id.tvId)
 
