@@ -43,11 +43,11 @@ El desarrollo del software se cumplió usando android estudio.
 Puedes encontrar más detalles acerca del uso tecnico en <a href="https://github.com/Jhosgun/Easy_meat/wiki">wiki</a>
 
 ## Authors ✒️
-* Carlos Eduardo Becerra Lizarazo - Desarrollo <a href="https://github.com/juan-pineda">Juan-pineda</a>
-* Oscar Mauricio Campos Sepúlveda - Desarrollo - <a href="https://github.com/LauraMR112">LauraMR112</a>
+* Carlos Eduardo Becerra Lizarazo - Desarrollo <a href="https://github.com/carlos0300">carlos0300</a>
+* Oscar Mauricio Campos Sepúlveda - Desarrollo - <a href="https://github.com/oskarwest">oskarwest</a>
 * Jorge Alfredo Jaimes Teherán - Desarrollo - <a href="https://github.com/Jhosgun">Jhosgun</a>
-* Camilo Ernesto Serrano Lozada - Desarrollo - <a href="https://github.com/Jhosgun">Jhosgun</a>
-* Gabriel Felipe Vega Ochoa - Desarrollo - <a href="https://github.com/Jhosgun">Jhosgun</a>
+* Camilo Ernesto Serrano Lozada - Desarrollo 
+* Gabriel Felipe Vega Ochoa - Desarrollo - <a href="https://github.com/ga-vo">ga-vo</a>
 
 ## Contact
 easymeat00@gmail.com
