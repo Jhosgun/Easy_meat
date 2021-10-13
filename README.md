@@ -12,7 +12,8 @@
 
 
 
-Pykinemetry is a python library develop to make easier the work of the astronomers in the analysis of galaxies, this library give the tools to make a remarkable study of velocity maps of a galaxy.
+
+Easymeat es un aplicativo móvil que permita gestionar las ventas que realicen las carnicerías y las compras que realicen los usuarios.
 
 
 
@@ -22,7 +23,7 @@ Para instalar la app de easymeat solo es necesario descargar el apk.
 Si se desea ver el código usa el comando:
 
 ```
-git clone:
+git clone: https://github.com/Jhosgun/Easy_meat.git
 ```
 
 El desarrollo del software se cumplió usando android estudio.
@@ -39,7 +40,7 @@ El desarrollo del software se cumplió usando android estudio.
 
 
 ## Wiki
-You can find more about the technical usage in the <a href="https://github.com/Jhosgun/Easy_meat/wiki">wiki</a>
+Puedes encontrar más detalles acerca del uso tecnico en <a href="https://github.com/Jhosgun/Easy_meat/wiki">wiki</a>
 
 ## Authors ✒️
 * Carlos Eduardo Becerra Lizarazo - Desarrollo <a href="https://github.com/juan-pineda">Juan-pineda</a>
